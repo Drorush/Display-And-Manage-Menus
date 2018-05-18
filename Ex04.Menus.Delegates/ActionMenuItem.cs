@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Delegates
 {
@@ -19,7 +15,7 @@ namespace Ex04.Menus.Delegates
             notifySystem();
         }
 
-        protected override void notifySystem()
+        private void notifySystem()
         {
             if (ReportChosenDelegates != null)
             {

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex04.Menus.Delegates
 {
@@ -15,6 +12,12 @@ namespace Ex04.Menus.Delegates
         private string m_MenuItemName;
         private int m_ID;
 
+        public string MenuItemName { get => m_MenuItemName; set => m_MenuItemName = value; }
+
+        public ReportChosenDelegate ReportChosenDelegates { get => m_ReportChosenDelegates; set => m_ReportChosenDelegates = value; }
+
+        internal int ItemIndex { get => m_ID; set => m_ID = value; }
+
         public MenuItem(int i_Index, string i_MenuItemName)
         {
             m_SubItems = new Dictionary<int, MenuItem>();
@@ -26,12 +29,6 @@ namespace Ex04.Menus.Delegates
         {
             m_SubItems.Add(i_SubItem.ItemIndex, i_SubItem);
         }
-
-        public string MenuItemName { get => m_MenuItemName; set => m_MenuItemName = value; }
-
-        public ReportChosenDelegate ReportChosenDelegates { get => m_ReportChosenDelegates; set => m_ReportChosenDelegates = value; }
-
-        internal int ItemIndex { get => m_ID; set => m_ID = value; }
 
         public void AttachObserver(ReportChosenDelegate i_ParentDelegate)
         {
@@ -89,14 +86,6 @@ namespace Ex04.Menus.Delegates
             foreach (KeyValuePair<int, MenuItem> pair in m_SubItems)
             {
                 Console.WriteLine("{0}. {1}", pair.Key, pair.Value.MenuItemName);
-            }
-        }
-
-        protected virtual void notifySystem()
-        {
-            if (ReportChosenDelegates != null)
-            {
-                ReportChosenDelegates.Invoke();
             }
         }
     }
