@@ -28,7 +28,9 @@ namespace Ex04.Menus.Delegates
         }
 
         public string MenuItemName { get => m_MenuItemName; set => m_MenuItemName = value; }
+
         public ReportChosenDelegate ReportChosenDelegates { get => m_ReportChosenDelegates; set => m_ReportChosenDelegates = value; }
+
         internal int ItemIndex { get => m_ID; set => m_ID = value; }
 
         public void AttachObserver(ReportChosenDelegate i_ParentDelegate)
@@ -59,15 +61,12 @@ namespace Ex04.Menus.Delegates
 
                     m_SubItems[chosenOption].doWhenChosen(this.m_ID, this.MenuItemName);
                 }
-
-
                 else
                 {
                     Ex02.ConsoleUtils.Screen.Clear();
                     break;
                 }
             }
-
         }
 
         private int getChosenOption()
