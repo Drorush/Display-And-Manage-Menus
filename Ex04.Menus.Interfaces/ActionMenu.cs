@@ -19,7 +19,7 @@ namespace Ex04.Menus.Interfaces
         }
         public void Report()
         {
-            foreach (IObservers observer in m_ReportObservers)
+            foreach (IOperation observer in m_ReportObservers)
             {
                 observer.Operation();
             }

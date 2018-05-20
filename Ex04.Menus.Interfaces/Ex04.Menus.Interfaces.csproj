@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="ActionMenu.cs" />
     <Compile Include="Actions.cs" />
-    <Compile Include="IObservers.cs" />
+    <Compile Include="IOperation.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

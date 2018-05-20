@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public interface IObservers
+    public interface IOperation
     {
         void Operation();
     }

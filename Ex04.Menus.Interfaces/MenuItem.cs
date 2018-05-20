@@ -7,7 +7,7 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem
     {
         private Dictionary<int, MenuItem> m_SubItems;
-        protected List<IObservers> m_ReportObservers = new List<IObservers>();
+        protected List<IOperation> m_ReportObservers = new List<IOperation>();
         private string m_MenuItemName;
         private int m_ID;
         public MenuItem(int i_Index, string i_MenuItemName)
@@ -32,12 +32,12 @@ namespace Ex04.Menus.Interfaces
             m_SubItems.Add(i_MenuItem.ItemIndex, i_MenuItem);
         }
 
-        public void AttachObserver(IObservers i_Observer)
+        public void AttachObserver(IOperation i_Observer)
         {
             m_ReportObservers.Add(i_Observer);
         }
 
-        public void DetachObserver(IObservers i_Observer)
+        public void DetachObserver(IOperation i_Observer)
         {
             m_ReportObservers.Remove(i_Observer);
         }

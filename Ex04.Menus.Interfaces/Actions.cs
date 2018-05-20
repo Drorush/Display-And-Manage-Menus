@@ -8,35 +8,35 @@ namespace Ex04.Menus.Interfaces
 {
     public class Actions
     {
-        public class ShowCurrentDate : IObservers
+        public class ShowCurrentDate : IOperation
         {
-            void IObservers.Operation()
+            void IOperation.Operation()
             {
                 DateTime localDate = DateTime.Now;
                 Console.WriteLine("Current date is: {0}", localDate.ToShortDateString());
                 Console.WriteLine("-----------------------------------");
             }
         }
-        public class ShowCurrentTime : IObservers
+        public class ShowCurrentTime : IOperation
         {
-            void IObservers.Operation()
+            void IOperation.Operation()
             {
                 DateTime localDate = DateTime.Now;
                 Console.WriteLine("Current time is: {0}", localDate.ToShortTimeString());
                 Console.WriteLine("-----------------------------------");
             }
         }
-        public class DisplayVersionMethod : IObservers
+        public class DisplayVersionMethod : IOperation
         {
-            void IObservers.Operation()
+            void IOperation.Operation()
             {
                 Console.WriteLine("App Version: 18.2.4.0");
                 Console.WriteLine("-----------------------------------");
             }
         }
-        public class CountCapitalsMethod : IObservers
+        public class CountCapitalsMethod : IOperation
         {
-            void IObservers.Operation()
+            void IOperation.Operation()
             {
                 int count = 0;
 
