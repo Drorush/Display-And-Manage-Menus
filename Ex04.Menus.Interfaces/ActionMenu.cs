@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-   public class ActionMenu : MenuItem
+    public class ActionMenu : MenuItem
     {
         public ActionMenu(int i_Index, string i_MenuItemName) : base(i_Index, i_MenuItemName)
         {
@@ -15,11 +15,11 @@ namespace Ex04.Menus.Interfaces
         }
         internal override void doWhenChosen(int i_ParentIndex, string i_ParentName)
         {
-            ReportAll ();
+            Report();
         }
-        public void ReportAll()
+        public void Report()
         {
-            foreach(IObservers observer in m_ReportObservers)
+            foreach (IObservers observer in m_ReportObservers)
             {
                 observer.Operation();
             }
