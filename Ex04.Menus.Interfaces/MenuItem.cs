@@ -1,57 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ex04.Menus.Delegates
-{
-    public delegate void ReportChosenDelegate();
 
-    public class MenuItem
+namespace Ex04.Menus.Interfaces
+{
+   public class MenuItem : IMenu
     {
         private Dictionary<int, MenuItem> m_SubItems;
-        private ReportChosenDelegate m_ReportChosenDelegates;
+        protected List<IObservers> m_ReportObservers =  new List<IObservers>();
         private string m_MenuItemName;
         private int m_ID;
-
-        public string MenuItemName { get => m_MenuItemName; set => m_MenuItemName = value; }
-
-        public ReportChosenDelegate ReportChosenDelegates { get => m_ReportChosenDelegates; set => m_ReportChosenDelegates = value; }
-
-        internal int ItemIndex { get => m_ID; set => m_ID = value; }
-
         public MenuItem(int i_Index, string i_MenuItemName)
         {
             m_SubItems = new Dictionary<int, MenuItem>();
             MenuItemName = i_MenuItemName;
             m_ID = i_Index;
         }
-
-        public void AddSubItem(MenuItem i_SubItem)
+        public string MenuItemName
         {
-            m_SubItems.Add(i_SubItem.ItemIndex, i_SubItem);
+            get => m_MenuItemName;
+            set => m_MenuItemName = value;
+        }
+        public int ItemIndex
+        {
+            get => m_ID;
+            set => m_ID = value;
         }
 
-        public void AttachObserver(ReportChosenDelegate i_ParentDelegate)
+        public void AddSubItem(MenuItem i_MenuItem)
         {
-            ReportChosenDelegates += i_ParentDelegate;
+            m_SubItems.Add(i_MenuItem.ItemIndex, i_MenuItem);
         }
 
-        public void DetachObserver(ReportChosenDelegate i_ParentDelegate)
+       public void AttachObserver(IObservers i_Observer)
         {
-            ReportChosenDelegates -= i_ParentDelegate;
+            m_ReportObservers.Add(i_Observer);
         }
 
+        public void DetachObserver(IObservers i_Observer)
+        {
+            m_ReportObservers.Remove(i_Observer);
+        }
+        
         internal virtual void doWhenChosen(int i_ParentIndex, string i_ParentName)
         {
-            while(true)
+            while (true)
             {
-                Console.WriteLine("{0}. {1}", i_ParentIndex, i_ParentName);
+                Console.WriteLine("{0}.{1}", i_ParentIndex, i_ParentName);
                 Console.WriteLine("================");
-                printSubItems();
-                int chosenOption = getChosenOption();
+                (this as IMenu).printMenuItems();
+                int chosenOption = (this as IMenu).getChosenOption();
                 if (chosenOption != 0)
                 {
                     MenuItem SubMenu = m_SubItems[chosenOption];
-                    if (!(SubMenu is ActionMenuItem))
+                    if (!(SubMenu is ActionMenu))
                     {
                         Console.Clear();
                     }
@@ -66,7 +68,8 @@ namespace Ex04.Menus.Delegates
             }
         }
 
-        private int getChosenOption()
+
+        int IMenu.getChosenOption()
         {
             Console.WriteLine("Please enter your choice (1-{0}) or 0 to go back:", m_SubItems.Count);
             string input = Console.ReadLine();
@@ -80,7 +83,7 @@ namespace Ex04.Menus.Delegates
             return chosenOption;
         }
 
-        private void printSubItems()
+        void IMenu.printMenuItems()
         {
             Console.WriteLine("0. Back");
             foreach (KeyValuePair<int, MenuItem> pair in m_SubItems)
