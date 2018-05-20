@@ -7,7 +7,7 @@ namespace Ex04.Menus.Interfaces
     public class MenuItem
     {
         private Dictionary<int, MenuItem> m_SubItems;
-        protected List<IOperation> m_ReportObservers = new List<IOperation>();
+        protected List<IOperation> m_Operations = new List<IOperation>();
         private string m_MenuItemName;
         private int m_ID;
         public MenuItem(int i_Index, string i_MenuItemName)
@@ -34,12 +34,12 @@ namespace Ex04.Menus.Interfaces
 
         public void AttachObserver(IOperation i_Observer)
         {
-            m_ReportObservers.Add(i_Observer);
+            m_Operations.Add(i_Observer);
         }
 
         public void DetachObserver(IOperation i_Observer)
         {
-            m_ReportObservers.Remove(i_Observer);
+            m_Operations.Remove(i_Observer);
         }
 
         internal virtual void doWhenChosen(int i_ParentIndex, string i_ParentName)
