@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MainMenu : IMenu
+    public class MainMenu
     {
         private Dictionary<int, MenuItem> m_MenuItems;
         private string m_MainMenuTitle;
 
-        public MainMenu (string i_MainMenuName)
+        public MainMenu(string i_MainMenuName)
         {
             m_MenuItems = new Dictionary<int, MenuItem>();
             m_MainMenuTitle = i_MainMenuName;
@@ -27,15 +27,15 @@ namespace Ex04.Menus.Interfaces
             {
                 Console.WriteLine(m_MainMenuTitle);
                 Console.WriteLine("================");
-                (this as IMenu).printMenuItems();
+                printMenuItems();
 
-                int id = (this as IMenu).getChosenOption();
+                int id = getChosenOption();
                 if (id == 0)
                 {
                     break;
                 }
                 MenuItem SubMenu = m_MenuItems[id];
-                if(!(SubMenu is ActionMenu))
+                if (!(SubMenu is ActionMenu))
                 {
                     Console.Clear();
                 }
@@ -45,7 +45,7 @@ namespace Ex04.Menus.Interfaces
 
         }
 
-         int IMenu.getChosenOption()
+        private int getChosenOption()
         {
             Console.WriteLine("Please enter your choice (1-{0}) or 0 to exit:", m_MenuItems.Count);
             string input = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace Ex04.Menus.Interfaces
             return chosenOption;
         }
 
-        void IMenu.printMenuItems()
+        private void printMenuItems()
         {
             Console.WriteLine("0. Exit");
             foreach (KeyValuePair<int, MenuItem> pair in m_MenuItems)

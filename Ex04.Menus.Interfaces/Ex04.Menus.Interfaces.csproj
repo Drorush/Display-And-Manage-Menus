@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="ActionMenu.cs" />
     <Compile Include="Actions.cs" />
-    <Compile Include="IMenu.cs" />
     <Compile Include="IObservers.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MainMenu.cs" />

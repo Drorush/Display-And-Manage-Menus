@@ -56,5 +56,5 @@ namespace Ex04.Menus.Interfaces
             }
         }
     }
-    
+
 }
