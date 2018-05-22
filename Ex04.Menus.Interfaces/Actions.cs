@@ -17,6 +17,7 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine("-----------------------------------");
             }
         }
+
         public class ShowCurrentTime : IOperation
         {
             void IOperation.Operation()
@@ -26,6 +27,7 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine("-----------------------------------");
             }
         }
+
         public class DisplayVersionMethod : IOperation
         {
             void IOperation.Operation()
@@ -34,6 +36,7 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine("-----------------------------------");
             }
         }
+
         public class CountCapitalsMethod : IOperation
         {
             void IOperation.Operation()
@@ -56,5 +59,4 @@ namespace Ex04.Menus.Interfaces
             }
         }
     }
-
 }

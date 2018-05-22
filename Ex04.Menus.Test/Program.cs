@@ -54,6 +54,7 @@ namespace Ex04.Menus.Test
             Console.WriteLine("Current date is: {0}", localDate.ToShortDateString());
             Console.WriteLine("-----------------------------------");
         }
+
         public static void runDelegates()
         {
             Delegates.MainMenu MainMenu = new Delegates.MainMenu("Main Menu - Delegates");
@@ -76,6 +77,7 @@ namespace Ex04.Menus.Test
 
             MainMenu.Show();
         }
+
         public static void runInterfaces()
         {
             Interfaces.MainMenu MainMenu = new Interfaces.MainMenu("Main Menu - Interfaces");
@@ -94,10 +96,9 @@ namespace Ex04.Menus.Test
             ShowDate.AttachObserver(new Interfaces.Actions.ShowCurrentDate());
             ShowTime.AttachObserver(new Interfaces.Actions.ShowCurrentTime());
             CountCapitals.AttachObserver(new Interfaces.Actions.CountCapitalsMethod());
-            VersionAndCapitals.AttachObserver(new Interfaces.Actions.DisplayVersionMethod());
+            DisplayVersion.AttachObserver(new Interfaces.Actions.DisplayVersionMethod());
 
             MainMenu.Show();
         }
-
     }
 }

@@ -16,6 +16,7 @@ namespace Ex04.Menus.Interfaces
             m_MenuItems = new Dictionary<int, MenuItem>();
             m_MainMenuTitle = i_MainMenuName;
         }
+
         public void AddSubItem(MenuItem i_MenuItem)
         {
             m_MenuItems.Add(i_MenuItem.ItemIndex, i_MenuItem);
@@ -34,6 +35,7 @@ namespace Ex04.Menus.Interfaces
                 {
                     break;
                 }
+
                 MenuItem SubMenu = m_MenuItems[id];
                 if (!(SubMenu is ActionMenu))
                 {
@@ -42,7 +44,6 @@ namespace Ex04.Menus.Interfaces
 
                 SubMenu.doWhenChosen(SubMenu.ItemIndex, SubMenu.MenuItemName);
             }
-
         }
 
         private int getChosenOption()
@@ -67,6 +68,5 @@ namespace Ex04.Menus.Interfaces
                 Console.WriteLine("{0}. {1}", pair.Key, pair.Value.MenuItemName);
             }
         }
-
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace Ex04.Menus.Interfaces
 {
     public class MenuItem
@@ -10,17 +9,20 @@ namespace Ex04.Menus.Interfaces
         protected List<IOperation> m_Operations = new List<IOperation>();
         private string m_MenuItemName;
         private int m_ID;
+
         public MenuItem(int i_Index, string i_MenuItemName)
         {
             m_SubItems = new Dictionary<int, MenuItem>();
             MenuItemName = i_MenuItemName;
             m_ID = i_Index;
         }
+
         public string MenuItemName
         {
             get => m_MenuItemName;
             set => m_MenuItemName = value;
         }
+
         public int ItemIndex
         {
             get => m_ID;
@@ -67,7 +69,6 @@ namespace Ex04.Menus.Interfaces
                 }
             }
         }
-
 
         private int getChosenOption()
         {

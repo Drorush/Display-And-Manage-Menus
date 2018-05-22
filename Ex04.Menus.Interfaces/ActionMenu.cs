@@ -13,17 +13,18 @@ namespace Ex04.Menus.Interfaces
             this.MenuItemName = i_MenuItemName;
             this.ItemIndex = i_Index;
         }
+
         internal override void doWhenChosen(int i_ParentIndex, string i_ParentName)
         {
             Report();
         }
+
         public void Report()
         {
             foreach (IOperation op in m_Operations)
             {
                 op.Operation();
             }
-
         }
     }
 }
